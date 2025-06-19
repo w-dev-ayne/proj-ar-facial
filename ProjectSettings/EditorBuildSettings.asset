@@ -9,5 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/SenderScene.unity
     guid: 1e0dbd1fcf56e4552b4e7d0ce17ad7ed
   m_configObjects:
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: a9cd7ef7b667549b8ae0ca45345d5128, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 6035778421abb4f4d9c0fe2382af2c7f, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1719a43e0c9e1451b8df3df87db2bc56, type: 2}
   m_UseUCBPForAssetBundles: 0
