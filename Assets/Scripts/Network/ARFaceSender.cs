@@ -8,7 +8,7 @@ public class ARFaceSender : MonoBehaviour
 
     private string ip;
     private int port;
-    private bool isStart = false;
+    public bool isStart { get; private set; } = false;
 
     private UdpClient client;
 

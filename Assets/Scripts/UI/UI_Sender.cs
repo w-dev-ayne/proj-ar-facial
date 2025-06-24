@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
 using System;
+using UnityEngine.XR.ARFoundation;
 
 public class UI_Sender : UI_Popup
 {
@@ -38,6 +39,17 @@ public class UI_Sender : UI_Popup
         string ip = GetObject((int)Objects.IPInputFieldObject).GetComponent<TMP_InputField>().text;
         int port = Int32.Parse(GetObject((int)Objects.PortInputFieldObject).GetComponent<TMP_InputField>().text);
 
-        ARFaceSender.Instance.StartSendData(ip, port);
+        if (!ARFaceSender.Instance.isStart)
+        {
+            ARFaceSender.Instance.StartSendData(ip, port);
+            GetButton((int)Buttons.SendDataButton).transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+        }
+        else
+        {
+            ARFaceSender.Instance.StopSendData();
+            GetButton((int)Buttons.SendDataButton).transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+        }
+
+        
     }
 }
