@@ -12,7 +12,8 @@ public class SenderScene : BaseScene
         SceneType = Define.Scene.SenderScene;
         Debug.Log($"{SceneType} Init");
 
-        Managers.UI.ShowPopupUI<UI_Sender>();
+        //Managers.UI.ShowPopupUI<UI_Sender>();
+        Managers.UI.ShowPopupUI<UI_Debug>();
 
         return true;
     }

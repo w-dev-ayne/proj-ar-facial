@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 846774430596813716}
   - component: {fileID: 3797244166503746031}
   - component: {fileID: 6414500886722603167}
+  - component: {fileID: 5617756558347962978}
   m_Layer: 0
   m_Name: AR Default Face
   m_TagString: Untagged
@@ -149,3 +150,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3c83f96690c146cd98ae22cb2268e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5617756558347962978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6955268496630564523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8b5c70578dc448cca81333a52e169be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arFaceManager: {fileID: 0}

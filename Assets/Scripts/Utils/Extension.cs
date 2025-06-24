@@ -23,6 +23,11 @@ public static class Extension
 		UI_Base.BindEvent(go, action, clipName, type);
 	}
 
+	public static void BindEvent(this Button go, Action action, String clipName = "Button1", Define.UIEvent type = Define.UIEvent.Click)
+	{
+		UI_Base.BindEvent(go.gameObject, action, clipName, type);
+	}
+
 	static System.Random _rand = new System.Random();
 
 	public static void Shuffle<T>(this IList<T> list)

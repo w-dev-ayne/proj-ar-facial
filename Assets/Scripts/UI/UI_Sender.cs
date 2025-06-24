@@ -16,7 +16,8 @@ public class UI_Sender : UI_Popup
 
     enum Buttons
     {
-        SendDataButton
+        SendDataButton,
+        CloseButton
     }
 
     public override bool Init()
@@ -24,7 +25,8 @@ public class UI_Sender : UI_Popup
         BindObject(typeof(Objects));
         BindButton(typeof(Buttons));
 
-        GetButton((int)Buttons.SendDataButton).gameObject.BindEvent(OnClickSendDataButton);
+        GetButton((int)Buttons.SendDataButton).BindEvent(OnClickSendDataButton);
+        GetButton((int)Buttons.CloseButton).BindEvent(ClosePopupUI);
 
         if (base.Init() == false)
             return false;
