@@ -24,17 +24,10 @@ public class ARFaceSender : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SendData(byte[] data)
     {
         if (!isStart)
             return;
-
-        var blendShapeKey = "jawOpen";
-        float blendShapeValue = Mathf.Abs(Mathf.Sin(Time.time)) + 0.9f;
-
-        string message = $"/blendshapes/{blendShapeKey} {blendShapeValue}";
-        byte[] data = Encoding.UTF8.GetBytes(message);
 
         client.Send(data, data.Length, ip, port);
     }
