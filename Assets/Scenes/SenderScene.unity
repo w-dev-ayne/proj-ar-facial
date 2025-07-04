@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 37388546}
   - component: {fileID: 37388545}
+  - component: {fileID: 37388547}
   m_Layer: 0
   m_Name: ARSession
   m_TagString: Untagged
@@ -150,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AttemptUpdate: 1
   m_MatchFrameRate: 1
-  m_TrackingMode: 2
+  m_TrackingMode: 1
 --- !u!4 &37388546
 Transform:
   m_ObjectHideFlags: 0
@@ -166,6 +167,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &37388547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37388544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa850fbd5b8aded44846f96e35f1a9f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &57207974
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +412,7 @@ MonoBehaviour:
   m_Camera: {fileID: 1072231953}
   m_OriginBaseGameObject: {fileID: 553156414}
   m_CameraFloorOffsetObject: {fileID: 271393657}
-  m_RequestedTrackingOriginMode: 2
+  m_RequestedTrackingOriginMode: 0
   m_CameraYOffset: 0
 --- !u!4 &553156418
 Transform:
@@ -431,7 +444,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <trackablesChanged>k__BackingField:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1887374196}
+        m_TargetAssemblyTypeName: ARManager, Assembly-CSharp
+        m_MethodName: OnTrackablesChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_FacePrefab: {fileID: 6955268496630564523, guid: 705887f5552444978aace82d8dfd45b0, type: 3}
   m_MaximumFaceCount: 1
 --- !u!1 &728694476
@@ -873,7 +898,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbe38fd86af354713b5ab19139f53a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 0}
+  onTrackableAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  onTrackableOut:
+    m_PersistentCalls:
+      m_Calls: []
+  onTrackableIn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

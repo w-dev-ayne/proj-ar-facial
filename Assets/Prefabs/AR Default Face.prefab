@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 910150563268974786}
   - component: {fileID: 846774430596813716}
   - component: {fileID: 3797244166503746031}
-  - component: {fileID: 6414500886722603167}
   - component: {fileID: 5617756558347962978}
   m_Layer: 0
   m_Name: AR Default Face
@@ -80,7 +79,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -116,7 +115,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 35bd980c8f2234e3d8b640e25a677d65, type: 2}
+  - {fileID: 2100000, guid: f5e4765bac75c475086c0f9dbc69b91a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -138,18 +137,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6414500886722603167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6955268496630564523}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3c83f96690c146cd98ae22cb2268e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5617756558347962978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,4 +149,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b5c70578dc448cca81333a52e169be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arFaceManager: {fileID: 0}

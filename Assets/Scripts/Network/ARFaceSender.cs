@@ -1,10 +1,12 @@
 using System.Net.Sockets;
 using System.Text;
 using UnityEngine;
+using extOSC;
 
 public class ARFaceSender : MonoBehaviour
 {
     public static ARFaceSender Instance;
+    private OSCTransmitter transmitter;
 
     private string ip;
     private int port;
@@ -15,6 +17,8 @@ public class ARFaceSender : MonoBehaviour
     void Awake()
     {
         Instance = this;
+
+        transmitter = gameObject.AddComponent<OSCTransmitter>();
     }
 
 
@@ -32,6 +36,14 @@ public class ARFaceSender : MonoBehaviour
         client.Send(data, data.Length, ip, port);
     }
 
+    public void SendData(OSCMessage message)
+    {
+        if (!isStart)
+            return;
+
+        transmitter.Send(message);
+    }
+
     public void StartSendData(string ipAddress, int port)
     {
         // 중복 실행 예외 처리
@@ -44,6 +56,9 @@ public class ARFaceSender : MonoBehaviour
 
         this.ip = ipAddress;
         this.port = port;
+
+        transmitter.RemoteHost = ip;
+        transmitter.RemotePort = port;
 
         client = new UdpClient();
         isStart = true;
