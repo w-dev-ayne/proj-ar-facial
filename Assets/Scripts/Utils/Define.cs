@@ -33,11 +33,25 @@ public class Define
 		Max,
 	}
 
-	public enum ContentType
+	public enum FaceTrackingStatus
 	{
-		Animation,
-		Puzzle,
-		Room,
-		DragAndDrop
+		None,
+		Tracking,
+		Out
+	}
+
+	public enum AppearDirection
+	{
+		left,
+		right,
+		top,
+		bottom
+	}
+
+	public enum AnimationType
+	{
+		A,
+		B,
+		C
 	}
 }

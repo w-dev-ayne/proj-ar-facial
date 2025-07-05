@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,6 +7,7 @@ using UnityEngine.XR.ARSubsystems;
 
 public class ARManager : MonoBehaviour
 {
+    public static ARManager Instance;
     public UnityEvent<ARFace> onTrackableAdded;
     public UnityEvent<ARFace> onTrackableOut;
     public UnityEvent<ARFace> onTrackableIn;
@@ -14,7 +16,7 @@ public class ARManager : MonoBehaviour
 
     void Awake()
     {
-        
+        Instance = this;
     }
 
     public void OnTrackablesChanged(ARTrackablesChangedEventArgs<ARFace> changes)

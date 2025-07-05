@@ -9,6 +9,7 @@ using UnityEngine.XR.ARFoundation;
 
 public class UI_Sender : UI_Popup
 {
+
     enum Objects
     {
         IPInputFieldObject,
@@ -42,14 +43,15 @@ public class UI_Sender : UI_Popup
         if (!ARFaceSender.Instance.isStart)
         {
             ARFaceSender.Instance.StartSendData(ip, port);
-            GetButton((int)Buttons.SendDataButton).transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+            GetButton((int)Buttons.SendDataButton).transform.GetChild(0).GetChild(0).gameObject.SetActive(!ARFaceSender.Instance.isStart);
+
         }
         else
         {
             ARFaceSender.Instance.StopSendData();
-            GetButton((int)Buttons.SendDataButton).transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+            GetButton((int)Buttons.SendDataButton).transform.GetChild(0).GetChild(0).gameObject.SetActive(!ARFaceSender.Instance.isStart);
         }
 
-        
+        Managers.UI.FindPopup<UI_Debug>().UpdateNetworkStatus(ARFaceSender.Instance.isStart);
     }
 }

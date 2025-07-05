@@ -74,6 +74,8 @@ public class ARFaceSender : MonoBehaviour
 
         isStart = false;
         client.Close();
+
+        Debug.Log($"UDP 데이터 전송 종료");
     }
 
     void OnApplicationQuit()

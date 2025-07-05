@@ -9,9 +9,15 @@ using UnityEngine.XR.ARFoundation;
 
 public class UI_Debug : UI_Popup
 {
+    public Color32 faceTrackingStatusNone;
+    public Color32 faceTrackingStatusTracking;
+    public Color32 faceTrackingStatusOut;
+
     enum Objects
     {
-        LogTextContentObject
+        LogTextContentObject,
+        TrackingStatusObject,
+        NetworkStatusObject
     }
 
     enum Buttons
@@ -22,7 +28,9 @@ public class UI_Debug : UI_Popup
 
     enum Texts
     {
-        LogText
+        LogText,
+        TrackingStatusText,
+        NetworkStatusText
     }
 
     public override bool Init()
@@ -33,8 +41,27 @@ public class UI_Debug : UI_Popup
 
         GetButton((int)Buttons.CameraButton).BindEvent(OnClickCameraButton);
         GetButton((int)Buttons.SettingButton).BindEvent(OnClickSettingButton);
+        GetObject((int)Objects.TrackingStatusObject).GetComponent<Image>().color = this.faceTrackingStatusNone;
 
-        SetActiveCameraIcon(true);
+        SetActiveCameraIcon(false);
+        UpdateNetworkStatus(false);
+        UpdateTrackingStatus(Define.FaceTrackingStatus.None);
+
+        ARManager.Instance.onTrackableAdded.AddListener((face) =>
+        {
+            UpdateTrackingStatus(Define.FaceTrackingStatus.Tracking);
+        });
+
+
+        ARManager.Instance.onTrackableIn.AddListener((face) =>
+        {
+            UpdateTrackingStatus(Define.FaceTrackingStatus.Tracking);
+        });
+
+        ARManager.Instance.onTrackableOut.AddListener((face) =>
+        {
+            UpdateTrackingStatus(Define.FaceTrackingStatus.Out);
+        });
 
         if (base.Init() == false)
             return false;
@@ -70,5 +97,49 @@ public class UI_Debug : UI_Popup
         var size = content.sizeDelta;
         size.y = contentHeight;
         content.sizeDelta = size;
+    }
+
+    public void UpdateTrackingStatus(Define.FaceTrackingStatus status)
+    {
+        Image image = GetObject((int)Objects.TrackingStatusObject).GetComponent<Image>();
+        TextMeshProUGUI tmp = GetText((int)Texts.TrackingStatusText);
+
+        switch (status)
+        {
+            case Define.FaceTrackingStatus.None:
+                image.color = this.faceTrackingStatusNone;
+                tmp.color = this.faceTrackingStatusNone;
+                tmp.text = "Face None";
+                break;
+            case Define.FaceTrackingStatus.Tracking:
+                image.color = this.faceTrackingStatusTracking;
+                tmp.color = this.faceTrackingStatusTracking;
+                tmp.text = "Face In";
+                break;
+            case Define.FaceTrackingStatus.Out:
+                image.color = this.faceTrackingStatusOut;
+                tmp.color = this.faceTrackingStatusOut;
+                tmp.text = "Face Out";
+                break;
+        }
+    }
+
+    public void UpdateNetworkStatus(bool isConnect)
+    {
+        Image image = GetObject((int)Objects.NetworkStatusObject).GetComponent<Image>();
+        TextMeshProUGUI tmp = GetText((int)Texts.NetworkStatusText);
+
+        if (isConnect)
+        {
+            image.color = this.faceTrackingStatusTracking;
+            tmp.color = this.faceTrackingStatusTracking;
+            tmp.text = "Connect";
+        }
+        else
+        {
+            image.color = this.faceTrackingStatusNone;
+            tmp.color = this.faceTrackingStatusNone;
+            tmp.text = "Disconnect";
+        }
     }
 }

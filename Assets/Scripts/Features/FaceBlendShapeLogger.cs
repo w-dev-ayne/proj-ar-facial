@@ -17,7 +17,10 @@ public class FaceBlendShapeLogger : MonoBehaviour
     private ARFaceSender sender;
 
     private string logText = String.Empty;
-    List<ARKitBlendShapeCoefficient> blendShapes = new List<ARKitBlendShapeCoefficient>();
+    private List<ARKitBlendShapeCoefficient> blendShapes = new List<ARKitBlendShapeCoefficient>();
+
+    [SerializeField]
+    private bool enableLog = false;
 
     void Awake()
     {
@@ -57,7 +60,8 @@ public class FaceBlendShapeLogger : MonoBehaviour
     byte[] sendData = Encoding.UTF8.GetBytes(data);
     sender.SendData(sendData);
 
-    Managers.UI.FindPopup<UI_Debug>().UpdateLogText(log);
+    if(enableLog)
+        Managers.UI.FindPopup<UI_Debug>().UpdateLogText(log);
 
         /*
                 logText = String.Empty;
@@ -134,7 +138,8 @@ public class FaceBlendShapeLogger : MonoBehaviour
             {
                 int valueInt = Mathf.RoundToInt(blendShape.coefficient * 100f);
                 sb.Append($"{vseeKey}-{valueInt}|");
-                log.Append($"{blendShape.blendShapeLocation} : {blendShape.coefficient:F3}\n");
+                if(enableLog)
+                    log.Append($"{blendShape.blendShapeLocation} : {blendShape.coefficient:F3}\n");
             }
         }
 
@@ -163,6 +168,7 @@ public class FaceBlendShapeLogger : MonoBehaviour
         sb.Append(headSection);
         sb.Append(rightEyeSection);
         sb.Append(leftEyeSection);
+
 
         logText = log.ToString();
 
